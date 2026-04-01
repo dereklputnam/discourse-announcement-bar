@@ -17,7 +17,8 @@ export default class AnnouncementBar extends Component {
 
   <template>
     {{#if (and this.showOnRoute this.showOnMobile this.cookieState this.showInCategories)}}
-      <div class='announcement-bar__wrapper {{settings.plugin_outlet}}' style={{this.barStyle}}>
+      <div class='announcement-bar__wrapper {{settings.plugin_outlet}}'>
+
         <div class='announcement-bar__container'>
           <div class='announcement-bar__content'>
             <span>{{htmlSafe settings.bar_text}}</span>
@@ -58,17 +59,6 @@ export default class AnnouncementBar extends Component {
       default:
         return false;
     }
-  }
-
-  get barStyle() {
-    const parts = [];
-    if (settings.background_color) {
-      parts.push(`--announcement-bar-bg: ${settings.background_color}`);
-    }
-    if (settings.text_color) {
-      parts.push(`--announcement-bar-text: ${settings.text_color}`);
-    }
-    return htmlSafe(parts.join('; '));
   }
 
   parseListSetting(value) {

@@ -1,7 +1,8 @@
 .announcement-bar {
   &__wrapper {
-    background-color: var(--announcement-bar-bg, var(--quaternary));
-    color: var(--announcement-bar-text, var(--secondary));
+    background-color: var(--tertiary-low);
+    color: var(--primary);
+    border-left: 4px solid var(--primary-medium);
   }
 
   &__container {
@@ -20,7 +21,7 @@
   }
 
   &__close a {
-    color: var(--announcement-bar-text, var(--secondary));
+    color: var(--primary);
   }
 }
 
