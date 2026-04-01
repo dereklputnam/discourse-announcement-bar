@@ -45,6 +45,16 @@ show_in_categories:
   default: ""
   description:
     en: "Restrict the announcement bar to specific categories. Leave empty to show in all categories."
+background_color:
+  type: color
+  default: "var(--quaternary)"
+  description:
+    en: "Background color of the announcement bar."
+text_color:
+  type: color
+  default: "var(--secondary)"
+  description:
+    en: "Text and icon color of the announcement bar."
 plugin_outlet:
   default: "above-site-header"
 dismissable:

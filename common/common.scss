@@ -1,7 +1,7 @@
 .announcement-bar {
   &__wrapper {
-    background-color: var(--quaternary);
-    color: var(--secondary);
+    background-color: #{settings.background_color};
+    color: #{settings.text_color};
   }
 
   &__container {
@@ -20,7 +20,7 @@
   }
 
   &__close a {
-    color: var(--secondary);
+    color: #{settings.text_color};
   }
 }
 
