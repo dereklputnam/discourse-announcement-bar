@@ -59,14 +59,13 @@ export default class AnnouncementBar extends Component {
   get showInCategories() {
     if (!settings.show_in_categories) return true;
 
-    const allowedIds = settings.show_in_categories.split('|').map(Number);
+    const allowedSlugs = settings.show_in_categories.split(',').map((s) => s.trim());
 
     let route = this.router.currentRoute;
     while (route) {
       const slug = route.params?.categorySlug || route.params?.category_slug;
       if (slug) {
-        const category = this.site.categories.find((c) => c.slug === slug);
-        return category ? allowedIds.includes(category.id) : false;
+        return allowedSlugs.includes(slug);
       }
       route = route.parent;
     }

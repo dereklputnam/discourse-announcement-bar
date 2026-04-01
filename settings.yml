@@ -39,10 +39,10 @@ show_on:
     - latest/top/new/categories
     - everywhere
 show_in_categories:
-  type: category_list
+  type: list
   default: ""
   description:
-    en: "Restrict the announcement bar to specific categories. Leave empty to show in all categories."
+    en: "Restrict the announcement bar to specific category slugs (comma-separated). Leave empty to show in all categories."
 plugin_outlet:
   default: "above-site-header"
 hide_on_mobile:
