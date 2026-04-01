@@ -30,11 +30,13 @@ export default class AnnouncementBar extends Component {
               </a>
             {{/if}}
           </div>
-          <div class='announcement-bar__close'>
-            <a {{on 'click' this.closeBanner}}>
-              {{icon 'xmark'}}
-            </a>
-          </div>
+          {{#if settings.dismissable}}
+            <div class='announcement-bar__close'>
+              <a {{on 'click' this.closeBanner}}>
+                {{icon 'xmark'}}
+              </a>
+            </div>
+          {{/if}}
         </div>
       </div>
     {{/if}}
@@ -51,6 +53,8 @@ export default class AnnouncementBar extends Component {
         const topMenu = this.siteSettings.top_menu;
         const targets = topMenu.split('|').map((opt) => `discovery.${opt}`);
         return targets.includes(currentRoute);
+      case 'specific categories':
+        return !currentRoute.includes('admin');
       default:
         return false;
     }
@@ -62,7 +66,7 @@ export default class AnnouncementBar extends Component {
   }
 
   get showInCategories() {
-    if (!settings.show_in_categories) return true;
+    if (settings.show_on !== 'specific categories') return true;
 
     const allowed = this.parseListSetting(settings.show_in_categories);
     if (!allowed.length) return true;
@@ -93,6 +97,7 @@ export default class AnnouncementBar extends Component {
   }
 
   get cookieState() {
+    if (!settings.dismissable) return true;
     const closed_cookie = cookie('discourse_announcement_bar_closed');
     if (closed_cookie) {
       const cookieValue = JSON.parse(closed_cookie);

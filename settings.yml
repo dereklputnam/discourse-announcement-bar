@@ -38,6 +38,7 @@ show_on:
     - homepage
     - latest/top/new/categories
     - everywhere
+    - specific categories
 show_in_categories:
   type: list
   list_type: category
@@ -46,5 +47,10 @@ show_in_categories:
     en: "Restrict the announcement bar to specific categories. Leave empty to show in all categories."
 plugin_outlet:
   default: "above-site-header"
+dismissable:
+  type: bool
+  default: true
+  description:
+    en: "Allow users to dismiss the announcement bar."
 hide_on_mobile:
   default: false
