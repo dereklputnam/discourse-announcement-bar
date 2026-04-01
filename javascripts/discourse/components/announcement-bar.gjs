@@ -56,16 +56,24 @@ export default class AnnouncementBar extends Component {
     }
   }
 
+  parseListSetting(value) {
+    const str = Array.isArray(value) ? value.join(',') : value;
+    return str.split(',').map((s) => s.trim()).filter(Boolean);
+  }
+
   get showInCategories() {
     if (!settings.show_in_categories) return true;
 
-    const allowedSlugs = settings.show_in_categories.split(',').map((s) => s.trim());
+    const allowed = this.parseListSetting(settings.show_in_categories);
+    if (!allowed.length) return true;
 
     let route = this.router.currentRoute;
     while (route) {
       const slug = route.params?.categorySlug || route.params?.category_slug;
       if (slug) {
-        return allowedSlugs.includes(slug);
+        const category = this.site.categories.find((c) => c.slug === slug);
+        if (!category) return false;
+        return allowed.includes(String(category.id)) || allowed.includes(category.slug);
       }
       route = route.parent;
     }
