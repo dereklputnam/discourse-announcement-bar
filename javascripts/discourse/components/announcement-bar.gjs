@@ -21,12 +21,14 @@ export default class AnnouncementBar extends Component {
         <div class='announcement-bar__container'>
           <div class='announcement-bar__content'>
             <span>{{htmlSafe settings.bar_text}}</span>
-            <a
-              class='btn btn-primary'
-              href='{{settings.button_link}}'
-              target='{{settings.button_target}}'
-            >{{settings.button_text}}
-            </a>
+            {{#if settings.show_button}}
+              <a
+                class='btn btn-primary'
+                href='{{settings.button_link}}'
+                target='{{settings.button_target}}'
+              >{{settings.button_text}}
+              </a>
+            {{/if}}
           </div>
           <div class='announcement-bar__close'>
             <a {{on 'click' this.closeBanner}}>

@@ -3,6 +3,11 @@ bar_text:
   default: "Exciting news and opportunities!"
   description:
     en: "Text for the announcement bar."
+show_button:
+  type: bool
+  default: true
+  description:
+    en: "Show or hide the call-to-action button."
 button_text:
   type: string
   default: "Learn more"
